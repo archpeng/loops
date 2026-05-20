@@ -1,0 +1,120 @@
+name: Deploy to Aliyun OSS
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-oss-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      ALIYUN_ACCESS_KEY_ID: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
+      ALIYUN_ACCESS_KEY_SECRET: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
+      ALIYUN_OSS_BUCKET: ${{ vars.ALIYUN_OSS_BUCKET }}
+      ALIYUN_OSS_REGION: ${{ vars.ALIYUN_OSS_REGION }}
+      ALIYUN_OSS_ENDPOINT: ${{ vars.ALIYUN_OSS_ENDPOINT }}
+      ALIYUN_OSS_ADDRESSING_STYLE: ${{ vars.ALIYUN_OSS_ADDRESSING_STYLE }}
+      OSSUTIL_VERSION: 2.2.1
+      OSSUTIL_SHA256: fbf1026bd383a5d9bee051cd64a6226c730357ba569491f7c7b91af66560ef1d
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build
+        run: bun run build
+
+      - name: Validate deploy configuration
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          missing=()
+          for name in \
+            ALIYUN_ACCESS_KEY_ID \
+            ALIYUN_ACCESS_KEY_SECRET \
+            ALIYUN_OSS_BUCKET \
+            ALIYUN_OSS_REGION
+          do
+            if [ -z "${!name:-}" ]; then
+              missing+=("$name")
+            fi
+          done
+
+          if [ "${#missing[@]}" -gt 0 ]; then
+            printf '::error::Missing required GitHub Secrets/Variables: %s\n' "${missing[*]}"
+            exit 1
+          fi
+
+      - name: Install ossutil
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          sudo apt-get update
+          sudo apt-get install -y unzip
+
+          curl -fsSLo /tmp/ossutil.zip \
+            "https://gosspublic.alicdn.com/ossutil/v2/${OSSUTIL_VERSION}/ossutil-${OSSUTIL_VERSION}-linux-amd64.zip"
+          echo "${OSSUTIL_SHA256}  /tmp/ossutil.zip" | sha256sum -c -
+
+          unzip -q /tmp/ossutil.zip -d /tmp/ossutil
+          sudo install -m 0755 \
+            "/tmp/ossutil/ossutil-${OSSUTIL_VERSION}-linux-amd64/ossutil" \
+            /usr/local/bin/ossutil
+
+          ossutil version
+
+      - name: Configure and upload to OSS
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          config_file="$RUNNER_TEMP/ossutilconfig"
+          trap 'rm -f "$config_file"' EXIT
+
+          {
+            printf '[default]\n'
+            printf 'accessKeyID = %s\n' "$ALIYUN_ACCESS_KEY_ID"
+            printf 'accessKeySecret = %s\n' "$ALIYUN_ACCESS_KEY_SECRET"
+            printf 'region = %s\n' "$ALIYUN_OSS_REGION"
+
+            if [ -n "${ALIYUN_OSS_ENDPOINT:-}" ]; then
+              printf 'endpoint = %s\n' "$ALIYUN_OSS_ENDPOINT"
+            fi
+
+            if [ -n "${ALIYUN_OSS_ADDRESSING_STYLE:-}" ]; then
+              printf 'addressing-style = %s\n' "$ALIYUN_OSS_ADDRESSING_STYLE"
+            fi
+          } > "$config_file"
+          chmod 600 "$config_file"
+
+          ossutil -c "$config_file" api put-bucket-website \
+            --bucket "$ALIYUN_OSS_BUCKET" \
+            --website-configuration '{"IndexDocument":{"Suffix":"index.html","SupportSubDir":"true","Type":"0"},"ErrorDocument":{"Key":"index.html","HttpStatus":"404"}}'
+
+          ossutil -c "$config_file" sync dist/ "oss://${ALIYUN_OSS_BUCKET}/" --force
+          ossutil -c "$config_file" set-props "oss://${ALIYUN_OSS_BUCKET}/" \
+            --recursive \
+            --content-disposition inline \
+            --metadata-directive update \
+            --force \
+            --no-progress
