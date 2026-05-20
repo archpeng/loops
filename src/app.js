@@ -11,7 +11,7 @@ const detailModal = document.getElementById('plant-detail');
 // Fetch the data.json file
 async function loadPlants() {
   try {
-    const res = await fetch('/data.json');
+    const res = await fetch('./data.json');
     if (!res.ok) throw new Error('Data not found');
     const data = await res.json();
     plants = data.images || [];

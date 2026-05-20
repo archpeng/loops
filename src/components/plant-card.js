@@ -54,7 +54,7 @@ class PlantCard extends HTMLElement {
     const features = this.getAttribute('features') || '';
 
     // Encode filename for URL
-    const imageUrl = `/photos/${encodeURIComponent(filename)}`;
+    const imageUrl = `./photos/${encodeURIComponent(filename)}`;
 
     this.shadowRoot.innerHTML = `
       <style>

@@ -76,7 +76,7 @@ class PlantDetail extends HTMLElement {
     const color = this.getAttribute('color') || '#ffffff';
     const features = this.getAttribute('features') || '';
 
-    const imageUrl = `/photos/${encodeURIComponent(filename)}`;
+    const imageUrl = `./photos/${encodeURIComponent(filename)}`;
 
     this.shadowRoot.innerHTML = `
       <style>
