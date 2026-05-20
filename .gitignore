@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 keys.md
+.tmp-flowus-media
 
 # Editor directories and files
 .vscode/*

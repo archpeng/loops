@@ -1,3 +1,10 @@
+function publicUrl(path) {
+  const base = (import.meta.env?.BASE_URL || '/').replace(/\/?$/, '/');
+  const normalizedPath = path.replace(/^\/+/, '');
+  const encodedPath = normalizedPath.split('/').map(encodeURIComponent).join('/');
+  return `${base}${encodedPath}`;
+}
+
 class PlantCard extends HTMLElement {
   constructor() {
     super();
@@ -5,7 +12,7 @@ class PlantCard extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ['filename', 'name', 'scientific-name', 'caption', 'color'];
+    return ['filename', 'name', 'scientific-name', 'caption', 'color', 'features', 'image-src'];
   }
 
   attributeChangedCallback() {
@@ -33,7 +40,8 @@ class PlantCard extends HTMLElement {
         scientificName: this.getAttribute('scientific-name'),
         caption: this.getAttribute('caption'),
         color: this.getAttribute('color'),
-        features: this.getAttribute('features')
+        features: this.getAttribute('features'),
+        imageSrc: this.getAttribute('image-src')
       }
     }));
   }
@@ -53,8 +61,7 @@ class PlantCard extends HTMLElement {
     const color = this.getAttribute('color') || '#ffffff';
     const features = this.getAttribute('features') || '';
 
-    // Encode filename for URL
-    const imageUrl = `./photos/${encodeURIComponent(filename)}`;
+    const imageUrl = this.getAttribute('image-src') || publicUrl(`photos/${filename}`);
 
     this.shadowRoot.innerHTML = `
       <style>
@@ -63,40 +70,39 @@ class PlantCard extends HTMLElement {
         }
 
         .card {
-          background-color: var(--card-color, ${color});
-          border: var(--border-w-thick) solid var(--color-dark);
-          border-radius: var(--border-radius-lg);
-          box-shadow: var(--shadow-hard-md);
-          overflow: hidden;
-          transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+          color: var(--color-ink);
           cursor: pointer;
-          outline: none;
           display: flex;
           flex-direction: column;
+          gap: var(--space-3);
+          height: 100%;
+          outline: none;
+          padding: var(--space-3);
+          background: var(--color-paper);
+          border: var(--border);
+          border-radius: var(--radius);
+          box-shadow: var(--shadow-small);
+          transform: translate(0, 0);
+          transition: transform 120ms ease, box-shadow 120ms ease;
         }
 
         .card:hover {
-          box-shadow: var(--shadow-hard-lg);
-          transform: translate(-2px, -2px);
+          transform: translate(3px, 3px);
+          box-shadow: 1px 1px 0 var(--color-line);
         }
 
         .card:focus-visible {
-          box-shadow: var(--shadow-hard-lg);
-          border-color: var(--color-dark);
-          transform: translate(-4px, -4px);
-        }
-
-        .card:active {
-          box-shadow: var(--shadow-hard-sm);
-          transform: translate(2px, 2px);
+          outline: 4px solid var(--color-purple);
+          outline-offset: 4px;
         }
 
         .image-container {
           position: relative;
           width: 100%;
-          height: 220px;
-          border-bottom: var(--border-w-thick) solid var(--color-dark);
-          background-color: var(--color-bg);
+          aspect-ratio: 4 / 3;
+          border: 3px solid var(--color-line);
+          border-radius: 6px;
+          background-color: ${color};
           overflow: hidden;
         }
 
@@ -105,18 +111,12 @@ class PlantCard extends HTMLElement {
           height: 100%;
           object-fit: cover;
           display: block;
-          transition: transform 0.5s ease;
-        }
-
-        .card:hover .image-container img {
-          transform: scale(1.05);
         }
 
         .content {
-          padding: var(--spacing-md);
           display: flex;
           flex-direction: column;
-          gap: var(--spacing-sm);
+          gap: var(--space-2);
         }
 
         .title-row {
@@ -126,31 +126,25 @@ class PlantCard extends HTMLElement {
         }
 
         .name {
-          font-size: 1.4rem;
-          font-weight: var(--font-weight-black);
-          color: var(--color-dark);
-          line-height: 1.2;
+          font-size: 1.08rem;
+          font-weight: 950;
+          color: var(--color-ink);
+          line-height: 1.25;
         }
 
         .scientific-name {
-          font-size: 0.85rem;
+          font-size: 0.82rem;
           font-style: italic;
-          font-weight: var(--font-weight-bold);
-          color: rgba(0, 0, 0, 0.6);
+          font-weight: 800;
+          color: var(--color-muted);
           word-break: break-word;
         }
 
         .caption {
-          font-size: 0.95rem;
-          font-weight: var(--font-weight-bold);
-          line-height: 1.4;
-          margin-top: var(--spacing-xs);
-          padding: var(--spacing-sm);
-          background: var(--color-white);
-          border: var(--border-w-thin) solid var(--color-dark);
-          border-radius: var(--border-radius-md);
-          box-shadow: var(--shadow-hard-sm);
-          color: var(--color-dark);
+          font-size: 0.9rem;
+          line-height: 1.65;
+          color: var(--color-muted);
+          font-weight: 700;
         }
       </style>
       <div class="card" tabindex="0" role="button" aria-label="查看植物 ${name} 的详细信息">

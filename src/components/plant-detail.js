@@ -1,37 +1,49 @@
+function publicUrl(path) {
+  const base = (import.meta.env?.BASE_URL || '/').replace(/\/?$/, '/');
+  const normalizedPath = path.replace(/^\/+/, '');
+  const encodedPath = normalizedPath.split('/').map(encodeURIComponent).join('/');
+  return `${base}${encodedPath}`;
+}
+
 class PlantDetail extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
     this._isOpen = false;
+    this._onBackdropClick = this._onBackdropClick.bind(this);
+    this._onKeyDown = this._onKeyDown.bind(this);
   }
 
   static get observedAttributes() {
-    return ['open', 'filename', 'name', 'scientific-name', 'caption', 'color', 'features'];
+    return ['open', 'filename', 'name', 'scientific-name', 'caption', 'color', 'features', 'image-src'];
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
     if (name === 'open') {
       this._isOpen = newValue !== null;
       this.toggleModal();
-    } else {
-      this.render();
+      return;
     }
+
+    this.render();
   }
 
   connectedCallback() {
     this.render();
-    this.shadowRoot.addEventListener('click', this._onBackdropClick.bind(this));
-    window.addEventListener('keydown', this._onKeyDown.bind(this));
+    this.shadowRoot.addEventListener('click', this._onBackdropClick);
+    window.addEventListener('keydown', this._onKeyDown);
   }
 
   disconnectedCallback() {
-    window.removeEventListener('keydown', this._onKeyDown.bind(this));
+    this.shadowRoot.removeEventListener('click', this._onBackdropClick);
+    window.removeEventListener('keydown', this._onKeyDown);
   }
 
   _onBackdropClick(e) {
-    const dialog = this.shadowRoot.querySelector('.dialog-container');
+    const backdrop = this.shadowRoot.querySelector('.modal-backdrop');
     const closeBtn = this.shadowRoot.querySelector('.close-btn');
-    if (e.target === this.shadowRoot.querySelector('.modal-backdrop') || e.target === closeBtn || closeBtn.contains(e.target)) {
+
+    if (e.target === backdrop || e.target === closeBtn || closeBtn?.contains(e.target)) {
       this.close();
     }
   }
@@ -52,19 +64,15 @@ class PlantDetail extends HTMLElement {
 
   toggleModal() {
     const backdrop = this.shadowRoot.querySelector('.modal-backdrop');
-    if (backdrop) {
-      if (this._isOpen) {
-        backdrop.classList.add('show');
-        document.body.style.overflow = 'hidden';
-        // Focus the close button for accessibility
-        setTimeout(() => {
-          const closeBtn = this.shadowRoot.querySelector('.close-btn');
-          if (closeBtn) closeBtn.focus();
-        }, 50);
-      } else {
-        backdrop.classList.remove('show');
-        document.body.style.overflow = '';
-      }
+    if (!backdrop) return;
+
+    if (this._isOpen) {
+      backdrop.classList.add('show');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => this.shadowRoot.querySelector('.close-btn')?.focus(), 50);
+    } else {
+      backdrop.classList.remove('show');
+      document.body.style.overflow = '';
     }
   }
 
@@ -73,27 +81,22 @@ class PlantDetail extends HTMLElement {
     const name = this.getAttribute('name') || '';
     const scientificName = this.getAttribute('scientific-name') || '';
     const caption = this.getAttribute('caption') || '';
-    const color = this.getAttribute('color') || '#ffffff';
+    const color = this.getAttribute('color') || '#f5f4ef';
     const features = this.getAttribute('features') || '';
-
-    const imageUrl = `./photos/${encodeURIComponent(filename)}`;
+    const imageUrl = this.getAttribute('image-src') || publicUrl(`photos/${filename}`);
 
     this.shadowRoot.innerHTML = `
       <style>
         .modal-backdrop {
           position: fixed;
-          top: 0;
-          left: 0;
-          width: 100vw;
-          height: 100vh;
-          background: rgba(0, 0, 0, 0.6);
-          display: flex;
-          justify-content: center;
-          align-items: flex-end;
+          inset: 0;
           z-index: 1000;
+          display: grid;
+          place-items: end center;
+          background: rgba(18, 18, 18, 0.52);
           opacity: 0;
           pointer-events: none;
-          transition: opacity 0.2s ease;
+          transition: opacity 160ms ease;
         }
 
         .modal-backdrop.show {
@@ -102,91 +105,76 @@ class PlantDetail extends HTMLElement {
         }
 
         .dialog-container {
-          background-color: var(--color-bg);
-          border-top: var(--border-w-thick) solid var(--color-dark);
-          border-left: var(--border-w-thick) solid var(--color-dark);
-          border-right: var(--border-w-thick) solid var(--color-dark);
-          border-top-left-radius: var(--border-radius-lg);
-          border-top-right-radius: var(--border-radius-lg);
-          width: 100%;
-          max-width: 600px;
-          max-height: 88vh;
+          width: min(100%, 720px);
+          max-height: 92vh;
+          overflow: hidden;
           display: flex;
           flex-direction: column;
-          position: relative;
-          box-shadow: 0px -8px 0px var(--color-dark);
-          transform: translateY(100%);
-          transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+          background: var(--color-paper);
+          border: var(--border);
+          border-bottom: 0;
+          border-radius: var(--radius) var(--radius) 0 0;
+          box-shadow: 0 -8px 0 var(--color-line);
+          transform: translateY(24px);
+          transition: transform 180ms ease;
         }
 
         .modal-backdrop.show .dialog-container {
           transform: translateY(0);
         }
 
-        /* Header block of the dialog */
         .dialog-header {
           display: flex;
           justify-content: space-between;
-          align-items: center;
-          padding: var(--spacing-md);
-          background-color: ${color};
-          border-bottom: var(--border-w-thick) solid var(--color-dark);
-          border-top-left-radius: calc(var(--border-radius-lg) - 4px);
-          border-top-right-radius: calc(var(--border-radius-lg) - 4px);
+          align-items: flex-start;
+          gap: var(--space-4);
+          padding: var(--space-5);
+          border-bottom: 4px solid var(--color-line);
+          box-shadow: inset 12px 0 0 ${color};
         }
 
         .dialog-title {
-          font-size: 1.5rem;
-          font-weight: var(--font-weight-black);
-          color: var(--color-dark);
-          line-height: 1.1;
+          font-size: clamp(1.35rem, 5vw, 2.4rem);
+          font-weight: 950;
+          line-height: 1.15;
+          color: var(--color-ink);
         }
 
         .close-btn {
-          width: 44px;
-          height: 44px;
-          border: var(--border-w-thick) solid var(--color-dark);
-          border-radius: var(--border-radius-md);
-          background-color: var(--color-secondary);
-          color: var(--color-dark);
-          font-size: 1.5rem;
-          font-weight: var(--font-weight-black);
+          width: 40px;
+          height: 40px;
+          flex: 0 0 auto;
+          border: 3px solid var(--color-line);
+          border-radius: var(--radius);
+          background: var(--color-primary);
+          color: var(--color-ink);
+          font-size: 1.4rem;
+          font-weight: 950;
+          line-height: 1;
           cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-shadow: var(--shadow-hard-sm);
-          transition: var(--transition-fast);
+          box-shadow: var(--shadow-small);
+        }
+
+        .close-btn:hover,
+        .close-btn:focus-visible {
+          background: var(--color-accent);
           outline: none;
         }
 
-        .close-btn:hover, .close-btn:focus-visible {
-          transform: translate(-1px, -1px);
-          box-shadow: var(--shadow-hard-md);
-        }
-
-        .close-btn:active {
-          transform: translate(1px, 1px);
-          box-shadow: none;
-        }
-
-        /* Content block */
         .dialog-content {
-          padding: var(--spacing-md);
+          padding: var(--space-5);
           overflow-y: auto;
-          display: flex;
-          flex-direction: column;
-          gap: var(--spacing-md);
-          padding-bottom: calc(var(--spacing-xl) + env(safe-area-inset-bottom));
+          display: grid;
+          gap: var(--space-5);
+          padding-bottom: calc(var(--space-6) + env(safe-area-inset-bottom));
         }
 
         .image-wrapper {
-          border: var(--border-w-thick) solid var(--color-dark);
-          border-radius: var(--border-radius-md);
-          overflow: hidden;
-          box-shadow: var(--shadow-hard-md);
           aspect-ratio: 4 / 3;
-          background-color: var(--color-white);
+          overflow: hidden;
+          border-radius: var(--radius);
+          background: var(--color-accent);
+          border: 3px solid var(--color-line);
         }
 
         .image-wrapper img {
@@ -196,105 +184,78 @@ class PlantDetail extends HTMLElement {
           display: block;
         }
 
-        .plant-names {
-          background-color: var(--color-white);
-          border: var(--border-w-thick) solid var(--color-dark);
-          border-radius: var(--border-radius-md);
-          padding: var(--spacing-md);
-          box-shadow: var(--shadow-hard-md);
-          display: flex;
-          flex-direction: column;
-          gap: var(--spacing-xs);
+        .plant-names,
+        .text-block {
+          display: grid;
+          gap: var(--space-2);
+          padding: var(--space-4);
+          background: #ffffff;
+          border: 3px solid var(--color-line);
+          border-radius: var(--radius);
+          box-shadow: var(--shadow-small);
         }
 
         .name-label {
-          font-size: 1.6rem;
-          font-weight: var(--font-weight-black);
-          color: var(--color-dark);
+          font-size: 1.1rem;
+          font-weight: 950;
+          color: var(--color-ink);
         }
 
         .latin-label {
-          font-size: 0.95rem;
+          font-size: 0.9rem;
           font-style: italic;
-          font-weight: var(--font-weight-bold);
-          color: rgba(0, 0, 0, 0.6);
+          font-weight: 800;
+          color: var(--color-muted);
         }
 
-        .info-card {
-          background-color: var(--color-white);
-          border: var(--border-w-thick) solid var(--color-dark);
-          border-radius: var(--border-radius-md);
-          padding: var(--spacing-md);
-          box-shadow: var(--shadow-hard-md);
+        .section-label {
+          font-size: 0.78rem;
+          letter-spacing: 0;
+          text-transform: uppercase;
+          color: var(--color-muted);
+          font-weight: 950;
         }
 
-        .info-title {
-          font-size: 1.1rem;
-          font-weight: var(--font-weight-black);
-          margin-bottom: var(--spacing-sm);
-          background-color: var(--color-accent);
-          display: inline-block;
-          padding: 2px var(--spacing-sm);
-          border: var(--border-w-thin) solid var(--color-dark);
-          box-shadow: var(--shadow-hard-sm);
-          transform: rotate(-1deg);
-        }
-
-        .info-text {
-          font-size: 0.95rem;
-          line-height: 1.6;
-          font-weight: var(--font-weight-medium);
-          color: var(--color-dark);
-        }
-
-        .caption-card {
-          background-color: var(--color-white);
-          border: var(--border-w-thick) solid var(--color-dark);
-          border-radius: var(--border-radius-md);
-          padding: var(--spacing-md);
-          box-shadow: var(--shadow-hard-md);
-          border-left: 12px solid var(--color-primary); /* Neo-Brutalist blockquote */
-        }
-
-        .caption-text {
-          font-size: 1.05rem;
-          font-weight: var(--font-weight-bold);
-          line-height: 1.5;
-          color: var(--color-dark);
-          position: relative;
+        .body-text {
+          margin: 0;
+          font-size: 0.96rem;
+          line-height: 1.8;
+          color: var(--color-muted);
+          font-weight: 700;
         }
       </style>
-      
+
       <div class="modal-backdrop ${this._isOpen ? 'show' : ''}" role="dialog" aria-modal="true" aria-label="${name} 详情">
-        <div class="dialog-container">
-          <div class="dialog-header">
+        <article class="dialog-container">
+          <header class="dialog-header">
             <span class="dialog-title">${name}</span>
-            <button class="close-btn" aria-label="关闭详情窗口" tabindex="0">×</button>
-          </div>
+            <button class="close-btn" aria-label="关闭详情窗口" type="button">×</button>
+          </header>
+
           <div class="dialog-content">
             <div class="image-wrapper">
               <img src="${imageUrl}" alt="${name}">
             </div>
-            
-            <div class="plant-names">
+
+            <section class="plant-names">
               <div class="name-label">${name}</div>
               ${scientificName ? `<div class="latin-label">${scientificName}</div>` : ''}
-            </div>
+            </section>
 
-            <div class="caption-card">
-              <p class="caption-text">“${caption}”</p>
-            </div>
+            <section class="text-block">
+              <span class="section-label">Caption</span>
+              <p class="body-text">${caption}</p>
+            </section>
 
-            <div class="info-card">
-              <div class="info-title">植物特征</div>
-              <p class="info-text">${features}</p>
-            </div>
+            <section class="text-block">
+              <span class="section-label">Features</span>
+              <p class="body-text">${features}</p>
+            </section>
           </div>
-        </div>
+        </article>
       </div>
     `;
-    
-    // Wire up backdrop display and scrolling toggling
+
     this.toggleModal();
   }
 }

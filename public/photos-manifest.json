@@ -1,0 +1,571 @@
+{
+  "generatedAt": "2026-05-20T08:20:47.500Z",
+  "maxSize": 1600,
+  "quality": 82,
+  "count": 80,
+  "originalBytes": 404723421,
+  "optimizedBytes": 42104004,
+  "savingsPercent": 89.6,
+  "images": {
+    "2月喷雪花.jpg": {
+      "original": "photos/2月喷雪花.jpg",
+      "optimized": "photos-optimized/2月喷雪花-66d0a18bb7.jpg",
+      "originalBytes": 2691002,
+      "optimizedBytes": 667818,
+      "keptOriginal": false
+    },
+    "八角莲.jpg": {
+      "original": "photos/八角莲.jpg",
+      "optimized": "photos-optimized/八角莲-8b5ca8e740.jpg",
+      "originalBytes": 9976799,
+      "optimizedBytes": 477001,
+      "keptOriginal": false
+    },
+    "白色蔷薇.jpg": {
+      "original": "photos/白色蔷薇.jpg",
+      "optimized": "photos-optimized/白色蔷薇-02c791c666.jpg",
+      "originalBytes": 9211570,
+      "optimizedBytes": 326180,
+      "keptOriginal": false
+    },
+    "白色蓍草.jpg": {
+      "original": "photos/白色蓍草.jpg",
+      "optimized": "photos-optimized/白色蓍草-a3dfc554bf.jpg",
+      "originalBytes": 7541917,
+      "optimizedBytes": 375858,
+      "keptOriginal": false
+    },
+    "办公室门口.jpg": {
+      "original": "photos/办公室门口.jpg",
+      "optimized": "photos-optimized/办公室门口-97792b30a1.jpg",
+      "originalBytes": 5552625,
+      "optimizedBytes": 962178,
+      "keptOriginal": false
+    },
+    "薜荔墙.jpg": {
+      "original": "photos/薜荔墙.jpg",
+      "optimized": "photos-optimized/薜荔墙-c14ffa0094.jpg",
+      "originalBytes": 5806208,
+      "optimizedBytes": 463594,
+      "keptOriginal": false
+    },
+    "变红的火棘果.jpg": {
+      "original": "photos/变红的火棘果.jpg",
+      "optimized": "photos-optimized/变红的火棘果-e69ca0f399.jpg",
+      "originalBytes": 6154705,
+      "optimizedBytes": 573757,
+      "keptOriginal": false
+    },
+    "大麻叶泽兰.jpg": {
+      "original": "photos/大麻叶泽兰.jpg",
+      "optimized": "photos-optimized/大麻叶泽兰-1e17b4d8c2.jpg",
+      "originalBytes": 6945050,
+      "optimizedBytes": 498563,
+      "keptOriginal": false
+    },
+    "大麻叶泽兰2.jpg": {
+      "original": "photos/大麻叶泽兰2.jpg",
+      "optimized": "photos-optimized/大麻叶泽兰2-f5ca81f343.jpg",
+      "originalBytes": 5440200,
+      "optimizedBytes": 660562,
+      "keptOriginal": false
+    },
+    "杜衡叶子.jpg": {
+      "original": "photos/杜衡叶子.jpg",
+      "optimized": "photos-optimized/杜衡叶子-1a34abf415.jpg",
+      "originalBytes": 4788918,
+      "optimizedBytes": 870600,
+      "keptOriginal": false
+    },
+    "多肉开花.jpg": {
+      "original": "photos/多肉开花.jpg",
+      "optimized": "photos-optimized/多肉开花-a20cd771b3.jpg",
+      "originalBytes": 3428405,
+      "optimizedBytes": 436218,
+      "keptOriginal": false
+    },
+    "菲油果花.jpg": {
+      "original": "photos/菲油果花.jpg",
+      "optimized": "photos-optimized/菲油果花-23200a4331.jpg",
+      "originalBytes": 3037695,
+      "optimizedBytes": 499944,
+      "keptOriginal": false
+    },
+    "粉色绣球花0.jpg": {
+      "original": "photos/粉色绣球花0.jpg",
+      "optimized": "photos-optimized/粉色绣球花0-efd915c9a9.jpg",
+      "originalBytes": 2258024,
+      "optimizedBytes": 408927,
+      "keptOriginal": false
+    },
+    "粉色鸢尾花.jpg": {
+      "original": "photos/粉色鸢尾花.jpg",
+      "optimized": "photos-optimized/粉色鸢尾花-d452d7f078.jpg",
+      "originalBytes": 11268976,
+      "optimizedBytes": 210454,
+      "keptOriginal": false
+    },
+    "拱门.jpg": {
+      "original": "photos/拱门.jpg",
+      "optimized": "photos-optimized/拱门-f63a80aee9.jpg",
+      "originalBytes": 5511168,
+      "optimizedBytes": 430317,
+      "keptOriginal": false
+    },
+    "红色蘑菇.jpg": {
+      "original": "photos/红色蘑菇.jpg",
+      "optimized": "photos-optimized/红色蘑菇-cd139adbb4.jpg",
+      "originalBytes": 4350846,
+      "optimizedBytes": 390099,
+      "keptOriginal": false
+    },
+    "红色蓍草.jpg": {
+      "original": "photos/红色蓍草.jpg",
+      "optimized": "photos-optimized/红色蓍草-a7458c6605.jpg",
+      "originalBytes": 12955642,
+      "optimizedBytes": 465467,
+      "keptOriginal": false
+    },
+    "红色橡木叶子.jpeg": {
+      "original": "photos/红色橡木叶子.jpeg",
+      "optimized": "photos/红色橡木叶子.jpeg",
+      "originalBytes": 422357,
+      "optimizedBytes": 422357,
+      "keptOriginal": true
+    },
+    "黄色鸢尾花.jpg": {
+      "original": "photos/黄色鸢尾花.jpg",
+      "optimized": "photos-optimized/黄色鸢尾花-798bd536b0.jpg",
+      "originalBytes": 4090191,
+      "optimizedBytes": 205472,
+      "keptOriginal": false
+    },
+    "黄栀子.JPG": {
+      "original": "photos/黄栀子.JPG",
+      "optimized": "photos-optimized/黄栀子-ee7bf6a2be.jpg",
+      "originalBytes": 5248613,
+      "optimizedBytes": 249492,
+      "keptOriginal": false
+    },
+    "火棘果.jpeg": {
+      "original": "photos/火棘果.jpeg",
+      "optimized": "photos/火棘果.jpeg",
+      "originalBytes": 250437,
+      "optimizedBytes": 250437,
+      "keptOriginal": true
+    },
+    "火棘果.jpg": {
+      "original": "photos/火棘果.jpg",
+      "optimized": "photos-optimized/火棘果-df89d22354.jpg",
+      "originalBytes": 6124358,
+      "optimizedBytes": 492192,
+      "keptOriginal": false
+    },
+    "火心花.jpeg": {
+      "original": "photos/火心花.jpeg",
+      "optimized": "photos/火心花.jpeg",
+      "originalBytes": 216643,
+      "optimizedBytes": 216643,
+      "keptOriginal": true
+    },
+    "金鸡菊.jpg": {
+      "original": "photos/金鸡菊.jpg",
+      "optimized": "photos-optimized/金鸡菊-f9b7e95ed9.jpg",
+      "originalBytes": 2898071,
+      "optimizedBytes": 573790,
+      "keptOriginal": false
+    },
+    "金鸡菊2.jpg": {
+      "original": "photos/金鸡菊2.jpg",
+      "optimized": "photos-optimized/金鸡菊2-aa1a3eb47f.jpg",
+      "originalBytes": 3031201,
+      "optimizedBytes": 572631,
+      "keptOriginal": false
+    },
+    "金樱子_副本.JPG": {
+      "original": "photos/金樱子_副本.JPG",
+      "optimized": "photos-optimized/金樱子_副本-5154d0da55.jpg",
+      "originalBytes": 2168546,
+      "optimizedBytes": 342668,
+      "keptOriginal": false
+    },
+    "金樱子.jpg": {
+      "original": "photos/金樱子.jpg",
+      "optimized": "photos-optimized/金樱子-874cb3f6f0.jpg",
+      "originalBytes": 5080500,
+      "optimizedBytes": 396909,
+      "keptOriginal": false
+    },
+    "金樱子2.jpg": {
+      "original": "photos/金樱子2.jpg",
+      "optimized": "photos-optimized/金樱子2-2ad98b2c97.jpg",
+      "originalBytes": 4604193,
+      "optimizedBytes": 445946,
+      "keptOriginal": false
+    },
+    "蕨类水边.jpg": {
+      "original": "photos/蕨类水边.jpg",
+      "optimized": "photos-optimized/蕨类水边-5e0aa9f6c6.jpg",
+      "originalBytes": 7193656,
+      "optimizedBytes": 931051,
+      "keptOriginal": false
+    },
+    "蓝盆花_副本.jpg": {
+      "original": "photos/蓝盆花_副本.jpg",
+      "optimized": "photos-optimized/蓝盆花_副本-233a9adaba.jpg",
+      "originalBytes": 2466433,
+      "optimizedBytes": 413581,
+      "keptOriginal": false
+    },
+    "蓝盆花.jpg": {
+      "original": "photos/蓝盆花.jpg",
+      "optimized": "photos-optimized/蓝盆花-c2fcd2b244.jpg",
+      "originalBytes": 4706009,
+      "optimizedBytes": 262949,
+      "keptOriginal": false
+    },
+    "蓝色绣球花.jpg": {
+      "original": "photos/蓝色绣球花.jpg",
+      "optimized": "photos-optimized/蓝色绣球花-903a9a8868.jpg",
+      "originalBytes": 2597967,
+      "optimizedBytes": 465741,
+      "keptOriginal": false
+    },
+    "蓝色阴雨月季.jpeg": {
+      "original": "photos/蓝色阴雨月季.jpeg",
+      "optimized": "photos/蓝色阴雨月季.jpeg",
+      "originalBytes": 275292,
+      "optimizedBytes": 275292,
+      "keptOriginal": true
+    },
+    "蓝色鸢尾花.jpg": {
+      "original": "photos/蓝色鸢尾花.jpg",
+      "optimized": "photos-optimized/蓝色鸢尾花-374bafb018.jpg",
+      "originalBytes": 9487785,
+      "optimizedBytes": 170207,
+      "keptOriginal": false
+    },
+    "琉璃苣.JPG": {
+      "original": "photos/琉璃苣.JPG",
+      "optimized": "photos-optimized/琉璃苣-35e1049d4f.jpg",
+      "originalBytes": 6211056,
+      "optimizedBytes": 294076,
+      "keptOriginal": false
+    },
+    "玛格丽特.jpg": {
+      "original": "photos/玛格丽特.jpg",
+      "optimized": "photos-optimized/玛格丽特-6880b59ccf.jpg",
+      "originalBytes": 2619607,
+      "optimizedBytes": 474689,
+      "keptOriginal": false
+    },
+    "毛地黄花.jpg": {
+      "original": "photos/毛地黄花.jpg",
+      "optimized": "photos-optimized/毛地黄花-2bbb8534d3.jpg",
+      "originalBytes": 2592773,
+      "optimizedBytes": 456245,
+      "keptOriginal": false
+    },
+    "茅草.jpg": {
+      "original": "photos/茅草.jpg",
+      "optimized": "photos-optimized/茅草-ec23088e6c.jpg",
+      "originalBytes": 7605642,
+      "optimizedBytes": 663317,
+      "keptOriginal": false
+    },
+    "茅草1.jpg": {
+      "original": "photos/茅草1.jpg",
+      "optimized": "photos-optimized/茅草1-58c9acdb11.jpg",
+      "originalBytes": 6008782,
+      "optimizedBytes": 741736,
+      "keptOriginal": false
+    },
+    "秘境走廊.jpg": {
+      "original": "photos/秘境走廊.jpg",
+      "optimized": "photos-optimized/秘境走廊-dbca405422.jpg",
+      "originalBytes": 5617335,
+      "optimizedBytes": 962620,
+      "keptOriginal": false
+    },
+    "木芙蓉.jpg": {
+      "original": "photos/木芙蓉.jpg",
+      "optimized": "photos-optimized/木芙蓉-395df6b9d0.jpg",
+      "originalBytes": 10717008,
+      "optimizedBytes": 991139,
+      "keptOriginal": false
+    },
+    "木绣球92.jpg": {
+      "original": "photos/木绣球92.jpg",
+      "optimized": "photos-optimized/木绣球92-9725e0a3a6.jpg",
+      "originalBytes": 11204875,
+      "optimizedBytes": 339211,
+      "keptOriginal": false
+    },
+    "木贼.jpg": {
+      "original": "photos/木贼.jpg",
+      "optimized": "photos-optimized/木贼-804adabd4b.jpg",
+      "originalBytes": 9227427,
+      "optimizedBytes": 401751,
+      "keptOriginal": false
+    },
+    "撒金麦冬.jpg": {
+      "original": "photos/撒金麦冬.jpg",
+      "optimized": "photos-optimized/撒金麦冬-7f734e0f1c.jpg",
+      "originalBytes": 8932764,
+      "optimizedBytes": 329284,
+      "keptOriginal": false
+    },
+    "森林1.jpg": {
+      "original": "photos/森林1.jpg",
+      "optimized": "photos-optimized/森林1-c1ff3e1b2b.jpg",
+      "originalBytes": 9504272,
+      "optimizedBytes": 832132,
+      "keptOriginal": false
+    },
+    "森林2.jpg": {
+      "original": "photos/森林2.jpg",
+      "optimized": "photos-optimized/森林2-be283ffa37.jpg",
+      "originalBytes": 7695171,
+      "optimizedBytes": 678796,
+      "keptOriginal": false
+    },
+    "森林3.jpg": {
+      "original": "photos/森林3.jpg",
+      "optimized": "photos-optimized/森林3-9116cf7a59.jpg",
+      "originalBytes": 6933354,
+      "optimizedBytes": 651706,
+      "keptOriginal": false
+    },
+    "深蓝鼠尾草_副本.JPG": {
+      "original": "photos/深蓝鼠尾草_副本.JPG",
+      "optimized": "photos-optimized/深蓝鼠尾草_副本-77c41cbc79.jpg",
+      "originalBytes": 2107094,
+      "optimizedBytes": 263461,
+      "keptOriginal": false
+    },
+    "深蓝鼠尾草.jpg": {
+      "original": "photos/深蓝鼠尾草.jpg",
+      "optimized": "photos-optimized/深蓝鼠尾草-426d55283a.jpg",
+      "originalBytes": 10639847,
+      "optimizedBytes": 433913,
+      "keptOriginal": false
+    },
+    "深蓝鼠尾草特写.jpg": {
+      "original": "photos/深蓝鼠尾草特写.jpg",
+      "optimized": "photos-optimized/深蓝鼠尾草特写-c2aa2ba0d1.jpg",
+      "originalBytes": 2052704,
+      "optimizedBytes": 376667,
+      "keptOriginal": false
+    },
+    "蓍草.JPG": {
+      "original": "photos/蓍草.JPG",
+      "optimized": "photos-optimized/蓍草-65dc7f40ab.jpg",
+      "originalBytes": 4744552,
+      "optimizedBytes": 492255,
+      "keptOriginal": false
+    },
+    "十大功劳果子.png": {
+      "original": "photos/十大功劳果子.png",
+      "optimized": "photos-optimized/十大功劳果子-fe32993075.jpg",
+      "originalBytes": 1208809,
+      "optimizedBytes": 394348,
+      "keptOriginal": false
+    },
+    "螳螂.jpg": {
+      "original": "photos/螳螂.jpg",
+      "optimized": "photos-optimized/螳螂-5f38e7bdb8.jpg",
+      "originalBytes": 1529426,
+      "optimizedBytes": 670799,
+      "keptOriginal": false
+    },
+    "屋顶木芙蓉.jpg": {
+      "original": "photos/屋顶木芙蓉.jpg",
+      "optimized": "photos-optimized/屋顶木芙蓉-32c33528e7.jpg",
+      "originalBytes": 4539391,
+      "optimizedBytes": 638460,
+      "keptOriginal": false
+    },
+    "溪水.jpg": {
+      "original": "photos/溪水.jpg",
+      "optimized": "photos-optimized/溪水-c3d943dafa.jpg",
+      "originalBytes": 4803320,
+      "optimizedBytes": 724062,
+      "keptOriginal": false
+    },
+    "戏水池2.jpg": {
+      "original": "photos/戏水池2.jpg",
+      "optimized": "photos-optimized/戏水池2-5b32f76ce7.jpg",
+      "originalBytes": 3700083,
+      "optimizedBytes": 716093,
+      "keptOriginal": false
+    },
+    "戏水池月季.jpg": {
+      "original": "photos/戏水池月季.jpg",
+      "optimized": "photos-optimized/戏水池月季-1db88a8b05.jpg",
+      "originalBytes": 3934858,
+      "optimizedBytes": 751965,
+      "keptOriginal": false
+    },
+    "小桥.jpg": {
+      "original": "photos/小桥.jpg",
+      "optimized": "photos-optimized/小桥-2d5d4a60fd.jpg",
+      "originalBytes": 10362714,
+      "optimizedBytes": 883503,
+      "keptOriginal": false
+    },
+    "绣球.JPG": {
+      "original": "photos/绣球.JPG",
+      "optimized": "photos-optimized/绣球-bbce76a456.jpg",
+      "originalBytes": 2934671,
+      "optimizedBytes": 320658,
+      "keptOriginal": false
+    },
+    "阴生蕨类.jpg": {
+      "original": "photos/阴生蕨类.jpg",
+      "optimized": "photos-optimized/阴生蕨类-65cd16041d.jpg",
+      "originalBytes": 6627019,
+      "optimizedBytes": 403752,
+      "keptOriginal": false
+    },
+    "玉簪开花.JPG": {
+      "original": "photos/玉簪开花.JPG",
+      "optimized": "photos-optimized/玉簪开花-774b77d4f0.jpg",
+      "originalBytes": 2484874,
+      "optimizedBytes": 270525,
+      "keptOriginal": false
+    },
+    "院子E1.jpg": {
+      "original": "photos/院子E1.jpg",
+      "optimized": "photos-optimized/院子E1-673eee98d8.jpg",
+      "originalBytes": 3324312,
+      "optimizedBytes": 470216,
+      "keptOriginal": false
+    },
+    "月季花.jpg": {
+      "original": "photos/月季花.jpg",
+      "optimized": "photos-optimized/月季花-0a9b1bc49b.jpg",
+      "originalBytes": 3144279,
+      "optimizedBytes": 557617,
+      "keptOriginal": false
+    },
+    "阅览室风车茉莉.jpg": {
+      "original": "photos/阅览室风车茉莉.jpg",
+      "optimized": "photos-optimized/阅览室风车茉莉-860aad385f.jpg",
+      "originalBytes": 4827530,
+      "optimizedBytes": 877807,
+      "keptOriginal": false
+    },
+    "泽兰.jpg": {
+      "original": "photos/泽兰.jpg",
+      "optimized": "photos-optimized/泽兰-06a8d2b8e8.jpg",
+      "originalBytes": 6310459,
+      "optimizedBytes": 504274,
+      "keptOriginal": false
+    },
+    "紫穗槐.jpg": {
+      "original": "photos/紫穗槐.jpg",
+      "optimized": "photos-optimized/紫穗槐-b539e6ac53.jpg",
+      "originalBytes": 6734465,
+      "optimizedBytes": 573996,
+      "keptOriginal": false
+    },
+    "紫藤果子.jpg": {
+      "original": "photos/紫藤果子.jpg",
+      "optimized": "photos-optimized/紫藤果子-4510e388a9.jpg",
+      "originalBytes": 6163350,
+      "optimizedBytes": 487659,
+      "keptOriginal": false
+    },
+    "紫藤花.jpeg": {
+      "original": "photos/紫藤花.jpeg",
+      "optimized": "photos/紫藤花.jpeg",
+      "originalBytes": 526560,
+      "optimizedBytes": 526560,
+      "keptOriginal": true
+    },
+    "紫藤花2.png": {
+      "original": "photos/紫藤花2.png",
+      "optimized": "photos-optimized/紫藤花2-c3b6f25f0f.jpg",
+      "originalBytes": 1472379,
+      "optimizedBytes": 546535,
+      "keptOriginal": false
+    },
+    "醉鱼草.jpg": {
+      "original": "photos/醉鱼草.jpg",
+      "optimized": "photos-optimized/醉鱼草-faaad92de3.jpg",
+      "originalBytes": 4353744,
+      "optimizedBytes": 751258,
+      "keptOriginal": false
+    },
+    "A2柳叶星河.jpg": {
+      "original": "photos/A2柳叶星河.jpg",
+      "optimized": "photos-optimized/A2柳叶星河-23f23b0394.jpg",
+      "originalBytes": 2512304,
+      "optimizedBytes": 440142,
+      "keptOriginal": false
+    },
+    "B2绣球花.jpg": {
+      "original": "photos/B2绣球花.jpg",
+      "optimized": "photos-optimized/B2绣球花-8ee2b860ae.jpg",
+      "originalBytes": 4548439,
+      "optimizedBytes": 816451,
+      "keptOriginal": false
+    },
+    "C2菲油果花.jpg": {
+      "original": "photos/C2菲油果花.jpg",
+      "optimized": "photos-optimized/C2菲油果花-3c99e23cf8.jpg",
+      "originalBytes": 3248507,
+      "optimizedBytes": 601666,
+      "keptOriginal": false
+    },
+    "D区走廊.jpg": {
+      "original": "photos/D区走廊.jpg",
+      "optimized": "photos-optimized/D区走廊-f91f0b35e7.jpg",
+      "originalBytes": 9545682,
+      "optimizedBytes": 776624,
+      "keptOriginal": false
+    },
+    "DSC03杜衡519.JPG": {
+      "original": "photos/DSC03杜衡519.JPG",
+      "optimized": "photos-optimized/DSC03杜衡519-2423c327df.jpg",
+      "originalBytes": 6292702,
+      "optimizedBytes": 356238,
+      "keptOriginal": false
+    },
+    "E2风车茉莉.jpg": {
+      "original": "photos/E2风车茉莉.jpg",
+      "optimized": "photos-optimized/E2风车茉莉-955d0e9102.jpg",
+      "originalBytes": 3776478,
+      "optimizedBytes": 679393,
+      "keptOriginal": false
+    },
+    "L1002000.jpg": {
+      "original": "photos/L1002000.jpg",
+      "optimized": "photos-optimized/L1002000-eecc68bb71.jpg",
+      "originalBytes": 2849549,
+      "optimizedBytes": 459127,
+      "keptOriginal": false
+    },
+    "L1002024.jpg": {
+      "original": "photos/L1002024.jpg",
+      "optimized": "photos-optimized/L1002024-7db0061a0a.jpg",
+      "originalBytes": 3523868,
+      "optimizedBytes": 713577,
+      "keptOriginal": false
+    },
+    "L1002053.jpg": {
+      "original": "photos/L1002053.jpg",
+      "optimized": "photos-optimized/L1002053-a50adc06b9.jpg",
+      "originalBytes": 3356389,
+      "optimizedBytes": 685441,
+      "keptOriginal": false
+    },
+    "L1002054.jpg": {
+      "original": "photos/L1002054.jpg",
+      "optimized": "photos-optimized/L1002054-2d502074fa.jpg",
+      "originalBytes": 3890995,
+      "optimizedBytes": 717365,
+      "keptOriginal": false
+    }
+  }
+}

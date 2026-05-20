@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>植物时光画廊 | 智能相册</title>
-  <meta name="description" content="一个由 AI 驱动的智能植物画廊，探索并发现生活中的绿意与自然印记。">
+  <title>Loopvill | 客房 花园 植物</title>
+  <meta name="description" content="Loopvill 的客房、花园与植物索引。">
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,46 +12,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;900&display=swap" rel="stylesheet">
   
   <!-- CSS Stylesheet -->
-  <link rel="stylesheet" href="/src/index.css">
+  <link rel="stylesheet" href="/src/index.css?v=20260520">
 </head>
 <body>
-  <div class="app-container">
-    <!-- Header -->
-    <header class="app-header">
-      <h1 class="app-title">PLANT印记</h1>
-      <span class="app-subtitle">智能植物画廊</span>
-    </header>
-
-    <!-- Search Section -->
-    <section class="search-container" aria-label="搜索植物">
-      <span class="search-icon" aria-hidden="true">🔍</span>
-      <input 
-        type="search" 
-        id="search-input" 
-        class="search-input" 
-        placeholder="搜索植物名称、学名或配文..." 
-        aria-label="输入植物名称搜索"
-      >
-    </section>
-
-    <!-- Project Stats / Project Rules Chinese Mode -->
-    <div id="stats-badge" class="stats-badge" role="status" aria-live="polite">
-      正在加载...
-    </div>
-
-    <!-- Feed List -->
-    <main id="plant-feed" class="plant-feed" role="feed" aria-busy="true">
-      <div class="empty-state">
-        <div class="loading-spinner"></div>
-        <p>植物相册加载中...</p>
-      </div>
-    </main>
-  </div>
-
-  <!-- Detail Drawer Modal -->
-  <plant-detail id="plant-detail"></plant-detail>
+  <div id="app"></div>
 
   <!-- Application Logic -->
-  <script type="module" src="/src/app.js"></script>
+  <script type="module" src="/src/app.js?v=20260520"></script>
 </body>
 </html>
